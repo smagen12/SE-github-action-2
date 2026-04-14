@@ -1,7 +1,7 @@
 name : Run Python Tests
 on:
   push:
-    branches: [ feature/python-test ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Run tests
         run: python -m unittest test_main.py -v
 
